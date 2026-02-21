@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Prompt Engineering Techniques</title>
+    <style>
+        :root { --primary: #8b5cf6; --secondary: #06b6d4; --bg: #0f172a; --text: #f1f5f9; --card: #1e293b; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 1.25rem; opacity: 0.8; margin-bottom: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .card { background: var(--card); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-4px); }
+        .card h3 { color: var(--secondary); margin-bottom: 0.5rem; }
+        .card .difficulty { font-size: 0.875rem; opacity: 0.7; }
+        .card .impact { font-size: 0.875rem; color: var(--primary); font-weight: bold; }
+        .cheat-sheet { background: var(--card); padding: 2rem; border-radius: 8px; margin: 2rem 0; font-family: monospace; white-space: pre-wrap; }
+        .technique-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+        .technique-nav a { background: var(--card); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; color: var(--text); font-size: 0.875rem; }
+        .technique-nav a:hover { background: var(--primary); }
+        footer { text-align: center; padding: 2rem; opacity: 0.7; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Advanced Prompt Engineering Techniques</h1>
+        <p class="subtitle">"The prompt is the new code. Master it, and you master the AI."</p>
+
+        <nav class="technique-nav">
+            <a href="#role">Role Packaging</a>
+            <a href="#persona">Persona</a>
+            <a href="#knowledge">Specific Knowledge</a>
+            <a href="#tone">Tone</a>
+            <a href="#style">Style</a>
+            <a href="#few-shot">Few-Shot</a>
+            <a href="#cot">Chain of Thought</a>
+            <a href="#accuracy">Accuracy</a>
+            <a href="#master">Mastering</a>
+        </nav>
+
+        <h2>📊 Technique Overview</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🎭 Role Packaging</h3>
+                <p class="difficulty">Difficulty: ⭐</p>
+                <p class="impact">Impact: High</p>
+                <p>Frame the AI's identity to activate relevant training data.</p>
+            </div>
+            <div class="card">
+                <h3>🎪 Persona Assignment</h3>
+                <p class="difficulty">Difficulty: ⭐</p>
+                <p class="impact">Impact: High</p>
+                <p>Give the AI character traits for consistent responses.</p>
+            </div>
+            <div class="card">
+                <h3>📚 Specific Knowledge</h3>
+                <p class="difficulty">Difficulty: ⭐⭐</p>
+                <p class="impact">Impact: Very High</p>
+                <p>Inject domain-specific information for precision.</p>
+            </div>
+            <div class="card">
+                <h3>🔗 Chain of Thought</h3>
+                <p class="difficulty">Difficulty: ⭐⭐⭐</p>
+                <p class="impact">Impact: Critical</p>
+                <p>Enable explicit reasoning for complex problems.</p>
+            </div>
+            <div class="card">
+                <h3>🎯 Few-Shot Learning</h3>
+                <p class="difficulty">Difficulty: ⭐⭐⭐</p>
+                <p class="impact">Impact: Very High</p>
+                <p>Provide examples to guide output patterns.</p>
+            </div>
+            <div class="card">
+                <h3>🎯 Accuracy Optimization</h3>
+                <p class="difficulty">Difficulty: ⭐⭐⭐</p>
+                <p class="impact">Impact: Critical</p>
+                <p>Precision-focused prompting with verification.</p>
+            </div>
+        </div>
+
+        <h2>📋 Quick Reference Cheat Sheet</h2>
+        <div class="cheat-sheet">┌─────────────────────────────────────────────────────────┐
+│  PROMPT ENGINEERING CHEAT SHEET                         │
+├─────────────────────────────────────────────────────────┤
+│  1. ROLE: "You are a..."                                │
+│  2. PERSONA: "You are patient, thorough..."             │
+│  3. KNOWLEDGE: "Using [standard]..."                    │
+│  4. TONE: "Respond in a... tone"                        │
+│  5. STYLE: "Use bullet points, tables..."               │
+│  6. TASK: "Complete these steps..."                     │
+│  7. EXAMPLES: Provide 2-3 worked examples               │
+│  8. FORMAT: "Output as a table with columns..."         │
+│  9. CoT: "Think step by step, show your work"           │
+│ 10. VERIFY: "Check your answer against..."              │
+└─────────────────────────────────────────────────────────┘</div>
+
+        <h2>🔗 Chain of Thought Example</h2>
+        <div class="card">
+            <h3>The Magic Phrase</h3>
+            <p><strong>"Let's think step by step."</strong></p>
+            <p>This simple phrase improves accuracy by 40-80% on complex reasoning tasks.</p>
+            <br>
+            <h3>Why It Works</h3>
+            <ul>
+                <li>Forces sequential processing</li>
+                <li>Makes errors visible</li>
+                <li>Enables verification</li>
+                <li>Builds trust through transparency</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>"Master the prompt, master the AI. Master the AI, master any domain."</p>
+        </footer>
+    </div>
+</body>
+</html>
