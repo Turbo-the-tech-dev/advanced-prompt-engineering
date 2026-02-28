@@ -1,120 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Prompt Engineering Techniques</title>
-    <style>
-        :root { --primary: #8b5cf6; --secondary: #06b6d4; --bg: #0f172a; --text: #f1f5f9; --card: #1e293b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .subtitle { font-size: 1.25rem; opacity: 0.8; margin-bottom: 2rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0; }
-        .card { background: var(--card); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-4px); }
-        .card h3 { color: var(--secondary); margin-bottom: 0.5rem; }
-        .card .difficulty { font-size: 0.875rem; opacity: 0.7; }
-        .card .impact { font-size: 0.875rem; color: var(--primary); font-weight: bold; }
-        .cheat-sheet { background: var(--card); padding: 2rem; border-radius: 8px; margin: 2rem 0; font-family: monospace; white-space: pre-wrap; }
-        .technique-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-        .technique-nav a { background: var(--card); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; color: var(--text); font-size: 0.875rem; }
-        .technique-nav a:hover { background: var(--primary); }
-        footer { text-align: center; padding: 2rem; opacity: 0.7; margin-top: 2rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>advanced-prompt-engineering — Turbo Fleet Command</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d1117;color:#c9d1d9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;line-height:1.6}
+.container{max-width:900px;margin:0 auto;padding:2rem 1.5rem}
+header{border-bottom:1px solid #21262d;padding-bottom:1.5rem;margin-bottom:2rem}
+h1{color:#58a6ff;font-size:2rem;font-weight:600;margin-bottom:.5rem}
+.badge{display:inline-block;background:#1f6feb;color:#fff;padding:.2rem .6rem;border-radius:12px;font-size:.75rem;margin-right:.5rem;margin-bottom:.5rem}
+.badge.fleet{background:#238636}
+.badge.tech{background:#8b5cf6}
+.description{color:#8b949e;font-size:1.1rem;margin-top:.75rem}
+.links{margin-top:1rem;display:flex;gap:.75rem;flex-wrap:wrap}
+.links a{color:#58a6ff;text-decoration:none;padding:.4rem .8rem;border:1px solid #30363d;border-radius:6px;font-size:.85rem;transition:all .2s}
+.links a:hover{background:#161b22;border-color:#58a6ff}
+.content{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:2rem;margin-top:1.5rem}
+.content h2{color:#58a6ff;margin:1.5rem 0 .75rem;font-size:1.4rem;border-bottom:1px solid #21262d;padding-bottom:.5rem}
+.content h2:first-child{margin-top:0}
+.content h3{color:#d2a8ff;margin:1.2rem 0 .5rem;font-size:1.1rem}
+.content p{margin:.5rem 0;color:#c9d1d9}
+.content ul,.content ol{margin:.5rem 0 .5rem 1.5rem}
+.content li{margin:.3rem 0;color:#c9d1d9}
+.content code{background:#1f2937;padding:.15rem .4rem;border-radius:4px;font-size:.9em;color:#f0883e}
+.content pre{background:#1f2937;padding:1rem;border-radius:6px;overflow-x:auto;margin:.75rem 0}
+.content pre code{background:none;padding:0;color:#c9d1d9}
+.content a{color:#58a6ff}
+.content blockquote{border-left:3px solid #3fb950;padding-left:1rem;margin:.75rem 0;color:#8b949e}
+.content table{width:100%;border-collapse:collapse;margin:.75rem 0}
+.content th,.content td{padding:.5rem .75rem;border:1px solid #21262d;text-align:left}
+.content th{background:#1f2937;color:#58a6ff}
+.content img{max-width:100%;border-radius:6px;margin:.5rem 0}
+footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #21262d;text-align:center;color:#484f58;font-size:.85rem}
+footer a{color:#58a6ff;text-decoration:none}
+@media(max-width:600px){.container{padding:1rem}.content{padding:1rem}h1{font-size:1.5rem}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>🧠 Advanced Prompt Engineering Techniques</h1>
-        <p class="subtitle">"The prompt is the new code. Master it, and you master the AI."</p>
-
-        <nav class="technique-nav">
-            <a href="#role">Role Packaging</a>
-            <a href="#persona">Persona</a>
-            <a href="#knowledge">Specific Knowledge</a>
-            <a href="#tone">Tone</a>
-            <a href="#style">Style</a>
-            <a href="#few-shot">Few-Shot</a>
-            <a href="#cot">Chain of Thought</a>
-            <a href="#accuracy">Accuracy</a>
-            <a href="#master">Mastering</a>
-        </nav>
-
-        <h2>📊 Technique Overview</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🎭 Role Packaging</h3>
-                <p class="difficulty">Difficulty: ⭐</p>
-                <p class="impact">Impact: High</p>
-                <p>Frame the AI's identity to activate relevant training data.</p>
-            </div>
-            <div class="card">
-                <h3>🎪 Persona Assignment</h3>
-                <p class="difficulty">Difficulty: ⭐</p>
-                <p class="impact">Impact: High</p>
-                <p>Give the AI character traits for consistent responses.</p>
-            </div>
-            <div class="card">
-                <h3>📚 Specific Knowledge</h3>
-                <p class="difficulty">Difficulty: ⭐⭐</p>
-                <p class="impact">Impact: Very High</p>
-                <p>Inject domain-specific information for precision.</p>
-            </div>
-            <div class="card">
-                <h3>🔗 Chain of Thought</h3>
-                <p class="difficulty">Difficulty: ⭐⭐⭐</p>
-                <p class="impact">Impact: Critical</p>
-                <p>Enable explicit reasoning for complex problems.</p>
-            </div>
-            <div class="card">
-                <h3>🎯 Few-Shot Learning</h3>
-                <p class="difficulty">Difficulty: ⭐⭐⭐</p>
-                <p class="impact">Impact: Very High</p>
-                <p>Provide examples to guide output patterns.</p>
-            </div>
-            <div class="card">
-                <h3>🎯 Accuracy Optimization</h3>
-                <p class="difficulty">Difficulty: ⭐⭐⭐</p>
-                <p class="impact">Impact: Critical</p>
-                <p>Precision-focused prompting with verification.</p>
-            </div>
-        </div>
-
-        <h2>📋 Quick Reference Cheat Sheet</h2>
-        <div class="cheat-sheet">┌─────────────────────────────────────────────────────────┐
-│  PROMPT ENGINEERING CHEAT SHEET                         │
-├─────────────────────────────────────────────────────────┤
-│  1. ROLE: "You are a..."                                │
-│  2. PERSONA: "You are patient, thorough..."             │
-│  3. KNOWLEDGE: "Using [standard]..."                    │
-│  4. TONE: "Respond in a... tone"                        │
-│  5. STYLE: "Use bullet points, tables..."               │
-│  6. TASK: "Complete these steps..."                     │
-│  7. EXAMPLES: Provide 2-3 worked examples               │
-│  8. FORMAT: "Output as a table with columns..."         │
-│  9. CoT: "Think step by step, show your work"           │
-│ 10. VERIFY: "Check your answer against..."              │
-└─────────────────────────────────────────────────────────┘</div>
-
-        <h2>🔗 Chain of Thought Example</h2>
-        <div class="card">
-            <h3>The Magic Phrase</h3>
-            <p><strong>"Let's think step by step."</strong></p>
-            <p>This simple phrase improves accuracy by 40-80% on complex reasoning tasks.</p>
-            <br>
-            <h3>Why It Works</h3>
-            <ul>
-                <li>Forces sequential processing</li>
-                <li>Makes errors visible</li>
-                <li>Enables verification</li>
-                <li>Builds trust through transparency</li>
-            </ul>
-        </div>
-
-        <footer>
-            <p>"Master the prompt, master the AI. Master the AI, master any domain."</p>
-        </footer>
-    </div>
+<div class="container">
+<header>
+<h1>advanced-prompt-engineering</h1>
+<div>
+<span class="badge" style="background:#8b949e">📁 Meta</span><span class="badge fleet">Turbo Fleet</span>
+</div>
+<p class="description">Advanced techniques for mastering AI prompt design</p>
+<div class="links">
+<a href="https://github.com/Turbo-the-tech-dev/advanced-prompt-engineering">GitHub Repo</a>
+<a href="https://github.com/Turbo-the-tech-dev">Turbo Fleet Command</a>
+</div>
+</header>
+<div class="content" id="readme-content">Loading...</div>
+<footer>
+<p>Part of <a href="https://github.com/Turbo-the-tech-dev">Turbo Fleet Command</a> · Powered by GitHub Pages</p>
+</footer>
+</div>
+<script>
+const readme = document.getElementById('readme-content');
+fetch('README.md')
+.then(r => r.ok ? r.text() : Promise.reject('No README'))
+.then(md => { readme.innerHTML = marked.parse(md); })
+.catch(() => { readme.innerHTML = '<p>Documentation coming soon.</p>'; });
+</script>
 </body>
 </html>
